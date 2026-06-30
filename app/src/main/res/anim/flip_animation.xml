@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LƯU Ý: Hiệu ứng lật thẻ 3D chất lượng cao (camera distance, perspective)
+    đã được chuyển sang triển khai lập trình bằng ObjectAnimator trong FlashCardActivity.kt
+    để đảm bảo độ mượt và hiệu ứng 3D chân thực nhất.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <!-- Result icon -->
+    <TextView
+        android:id="@+id/tvResultIcon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:text="✓"
+        android:textSize="18sp"
+        android:textColor="@color/correct"
+        android:gravity="center"
+        android:background="@color/correct_light"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Question info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvQuestionKanji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="食べる"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/on_surface"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCorrectAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đúng: Ăn"
+                android:textSize="12sp"
+                android:textColor="@color/correct"/>
+
+            <TextView
+                android:id="@+id/tvUserAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="12sp"
+                android:textColor="@color/wrong"
+                android:layout_marginStart="12dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Divider at bottom -->
+
+</LinearLayout>

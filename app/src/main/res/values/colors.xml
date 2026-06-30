@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ─── Primary Brand Colors (Indigo) ─── -->
+    <color name="primary">#3949AB</color>
+    <color name="primary_dark">#283593</color>
+    <color name="primary_light">#5C6BC0</color>
+    <color name="primary_container">#E8EAF6</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <!-- ─── Secondary (Deep Purple) ─── -->
+    <color name="secondary">#7B1FA2</color>
+    <color name="secondary_light">#9C27B0</color>
+    <color name="on_secondary">#FFFFFF</color>
+
+    <!-- ─── Surface & Background ─── -->
+    <color name="background">#F8F9FE</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F3F4FE</color>
+    <color name="on_background">#1A1C2E</color>
+    <color name="on_surface">#1A1C2E</color>
+    <color name="on_surface_variant">#5C5F7A</color>
+
+    <!-- ─── Outline & Divider ─── -->
+    <color name="outline">#E0E2F0</color>
+    <color name="divider">#EEEFF8</color>
+
+    <!-- ─── Level Colors — Gradient Start / End ─── -->
+    <!-- N5: Emerald Green -->
+    <color name="level_n5_start">#2E7D32</color>
+    <color name="level_n5_end">#66BB6A</color>
+    <color name="level_n5_bg">#E8F5E9</color>
+
+    <!-- N4: Ocean Blue -->
+    <color name="level_n4_start">#1565C0</color>
+    <color name="level_n4_end">#42A5F5</color>
+    <color name="level_n4_bg">#E3F2FD</color>
+
+    <!-- N3: Amethyst Purple -->
+    <color name="level_n3_start">#6A1B9A</color>
+    <color name="level_n3_end">#CE93D8</color>
+    <color name="level_n3_bg">#F3E5F5</color>
+
+    <!-- N2: Sunset Orange -->
+    <color name="level_n2_start">#E65100</color>
+    <color name="level_n2_end">#FF8A65</color>
+    <color name="level_n2_bg">#FBE9E7</color>
+
+    <!-- N1: Crimson Red -->
+    <color name="level_n1_start">#B71C1C</color>
+    <color name="level_n1_end">#EF5350</color>
+    <color name="level_n1_bg">#FFEBEE</color>
+
+    <!-- ─── Status Colors ─── -->
+    <color name="correct">#2E7D32</color>
+    <color name="correct_light">#E8F5E9</color>
+    <color name="wrong">#C62828</color>
+    <color name="wrong_light">#FFEBEE</color>
+    <color name="warning">#F57F17</color>
+    <color name="warning_light">#FFFDE7</color>
+
+    <!-- ─── Flashcard ─── -->
+    <color name="card_front">#3949AB</color>
+    <color name="card_front_text">#FFFFFF</color>
+    <color name="card_back">#1A237E</color>
+    <color name="card_back_text">#FFFFFF</color>
+
+    <!-- ─── Progress Bar ─── -->
+    <color name="progress_track">#E0E2F0</color>
+    <color name="progress_indicator">#3949AB</color>
+    <color name="progress_background">#E0E0E0</color>
+
+    <color name="progress_fill">#3F51B5</color>
+    <!-- ─── Dark Mode Surface Colors ─── -->
+    <color name="surface_dark">#1A1C2E</color>
+    <color name="surface_variant_dark">#252840</color>
+    <color name="on_surface_dark">#E8E9F5</color>
+
+    <!-- ─── Utility ─── -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="scrim">#80000000</color>
+</resources>

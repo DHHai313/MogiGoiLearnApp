@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_gradient_header"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@color/white"/>
+
+    <!-- Progress bar row -->
+    <LinearLayout
+        android:id="@+id/layoutProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/10"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:minWidth="50dp"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:progressDrawable="@drawable/progress_bar_custom"
+            android:progress="10"/>
+
+        <TextView
+            android:id="@+id/tvTotalCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textSize="13sp"
+            android:textColor="@color/on_surface_variant"
+            android:minWidth="30dp"
+            android:gravity="end"/>
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         MAIN CONTENT — FrameLayout chứa cả card lẫn màn hình hoàn thành
+         ══════════════════════════════════════════════════════════════ -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ── Flashcard area (hiện khi đang học) ─────────────────── -->
+        <LinearLayout
+            android:id="@+id/layoutStudy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!-- Card container -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="24dp">
+
+                <!-- THE FLASHCARD -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardFlashcard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="12dp"
+                    app:cardBackgroundColor="@color/card_front">
+
+                    <!-- FRONT FACE -->
+                    <LinearLayout
+                        android:id="@+id/layoutFront"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="32dp"
+                        android:background="@drawable/bg_flashcard_front">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="漢字"
+                            android:textSize="13sp"
+                            android:textColor="#80FFFFFF"
+                            android:letterSpacing="0.1"
+                            android:layout_marginBottom="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tvKanji"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="食べる"
+                            android:textSize="64sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:layout_marginBottom="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tvFurigana"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="たべる"
+                            android:textSize="22sp"
+                            android:textColor="#B3FFFFFF"
+                            android:gravity="center"
+                            android:layout_marginBottom="40dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/flashcard_tap_to_flip"
+                            android:textSize="13sp"
+                            android:textColor="#66FFFFFF"
+                            android:background="@drawable/bg_glass_card"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"/>
+
+                    </LinearLayout>
+
+                    <!-- BACK FACE -->
+                    <LinearLayout
+                        android:id="@+id/layoutBack"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="28dp"
+                        android:background="@drawable/bg_flashcard_back"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tvKanjiBack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="食べる"
+                            android:textSize="42sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tvFuriganaBack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="たべる"
+                            android:textSize="18sp"
+                            android:textColor="#B3FFFFFF"
+                            android:gravity="center"
+                            android:layout_marginBottom="16dp"/>
+
+                        <View
+                            android:layout_width="80dp"
+                            android:layout_height="1.5dp"
+                            android:background="#40FFFFFF"
+                            android:layout_marginBottom="16dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nghĩa"
+                            android:textSize="12sp"
+                            android:textColor="#80FFFFFF"
+                            android:letterSpacing="0.1"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:id="@+id/tvMeaning"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ăn"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:layout_marginBottom="16dp"/>
+
+                        <View
+                            android:layout_width="80dp"
+                            android:layout_height="1.5dp"
+                            android:background="#40FFFFFF"
+                            android:layout_marginBottom="12dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ví dụ"
+                            android:textSize="12sp"
+                            android:textColor="#80FFFFFF"
+                            android:letterSpacing="0.1"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:id="@+id/tvExample"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="毎日りんごを食べます。"
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:layout_marginBottom="6dp"/>
+
+                        <TextView
+                            android:id="@+id/tvExampleTranslation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tôi ăn táo mỗi ngày."
+                            android:textSize="13sp"
+                            android:textColor="#B3FFFFFF"
+                            android:gravity="center"
+                            android:fontFamily="sans-serif-light"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+            <!-- Bottom Navigation Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="24dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPrevious"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="← Trước"
+                    android:textSize="14sp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    app:cornerRadius="14dp"
+                    app:strokeColor="@color/primary"
+                    android:textColor="@color/primary"
+                    android:layout_marginEnd="8dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFlip"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="🔄 Lật"
+                    android:textSize="14sp"
+                    style="@style/Widget.Material3.Button"
+                    app:cornerRadius="14dp"
+                    android:backgroundTint="@color/primary"
+                    android:layout_marginEnd="8dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="Tiếp →"
+                    android:textSize="14sp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    app:cornerRadius="14dp"
+                    app:strokeColor="@color/primary"
+                    android:textColor="@color/primary"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- ── Màn hình hoàn thành (hiện khi xem xong thẻ cuối) ───── -->
+        <ScrollView
+            android:id="@+id/layoutCompletion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="32dp">
+
+                <!-- Trophy emoji -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎉"
+                    android:textSize="72sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hoàn thành!"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/on_background"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvCompletionMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bạn đã học xong tất cả từ vựng trong bài học này."
+                    android:textSize="15sp"
+                    android:textColor="@color/on_surface_variant"
+                    android:gravity="center"
+                    android:layout_marginBottom="40dp"/>
+
+                <!-- Stats card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="@color/primary_container"
+                    android:layout_marginBottom="32dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="24dp">
+
+                        <TextView
+                            android:id="@+id/tvCompletionCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10"
+                            android:textSize="48sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_dark"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="từ vựng đã học"
+                            android:textSize="14sp"
+                            android:textColor="@color/primary"
+                            android:layout_marginTop="4dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Restart button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRestart"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="🔄  Học lại từ đầu"
+                    android:textSize="15sp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    app:cornerRadius="16dp"
+                    app:strokeColor="@color/primary"
+                    android:textColor="@color/primary"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Back to lesson button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBackToLesson"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="← Quay về bài học"
+                    android:textSize="15sp"
+                    style="@style/Widget.Material3.Button"
+                    app:cornerRadius="16dp"
+                    android:backgroundTint="@color/primary"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
+
+</LinearLayout>

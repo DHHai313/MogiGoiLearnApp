@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">JLPT Vocab Master</string>
+
+    <!-- ─── Home ─── -->
+    <string name="home_title">JLPT Vocabulary Master</string>
+    <string name="home_subtitle">Học từ vựng tiếng Nhật</string>
+    <string name="stats_total_words">Tổng từ vựng</string>
+    <string name="stats_learned">Đã học</string>
+    <string name="stats_completion">Hoàn thành</string>
+    <string name="menu_vocabulary">Học từ vựng</string>
+    <string name="menu_quiz">Trắc nghiệm</string>
+    <string name="menu_progress">Tiến độ</string>
+    <string name="menu_settings">Cài đặt</string>
+    <string name="words_unit">từ</string>
+    <string name="coming_soon">Tính năng sắp ra mắt</string>
+
+    <!-- ─── Level ─── -->
+    <string name="level_screen_title">Chọn cấp độ</string>
+    <string name="level_lessons">bài học</string>
+    <string name="level_words">từ vựng</string>
+    <string name="level_n5_desc">Cơ bản</string>
+    <string name="level_n4_desc">Sơ cấp</string>
+    <string name="level_n3_desc">Trung cấp</string>
+    <string name="level_n2_desc">Nâng cao</string>
+    <string name="level_n1_desc">Cao cấp</string>
+
+    <!-- ─── Lesson ─── -->
+    <string name="lesson_screen_title">Danh sách bài học</string>
+    <string name="lesson_words_count">%d từ</string>
+    <string name="lesson_status_not_started">Chưa học</string>
+    <string name="lesson_status_learning">Đang học</string>
+    <string name="lesson_status_completed">Hoàn thành</string>
+
+    <!-- ─── Learning Mode ─── -->
+    <string name="mode_title">Chọn phương pháp học</string>
+    <string name="mode_flashcard">Flashcard</string>
+    <string name="mode_flashcard_desc">Lật thẻ để ghi nhớ từ vựng. Phù hợp để học và ôn luyện.</string>
+    <string name="mode_quiz">Trắc nghiệm</string>
+    <string name="mode_quiz_desc">Kiểm tra kiến thức với 4 lựa chọn. Phù hợp để luyện tập trước kỳ thi.</string>
+
+    <!-- ─── Flashcard ─── -->
+    <string name="flashcard_tap_to_flip">Nhấn để lật thẻ</string>
+    <string name="flashcard_meaning">Nghĩa</string>
+    <string name="flashcard_example">Ví dụ</string>
+    <string name="flashcard_translation">Dịch nghĩa</string>
+    <string name="flashcard_no_data">Không có từ vựng nào</string>
+    <string name="flashcard_btn_prev">Trước</string>
+    <string name="flashcard_btn_flip">Lật thẻ</string>
+    <string name="flashcard_btn_next">Tiếp</string>
+    <string name="flashcard_shuffle">Xáo trộn</string>
+    <string name="flashcard_completed">Bạn đã xem hết tất cả từ vựng! 🎉</string>
+
+    <!-- ─── Quiz ─── -->
+    <string name="quiz_question_counter" formatted="false">Câu %d/%d</string>
+    <string name="quiz_choose_meaning">Chọn nghĩa đúng của từ:</string>
+    <string name="quiz_correct">Chính xác! ✓</string>
+    <string name="quiz_wrong">Sai rồi! ✗</string>
+    <string name="quiz_score" formatted="false">%d/%d</string>
+    <string name="quiz_no_data">Không có câu hỏi nào</string>
+
+    <!-- ─── Result ─── -->
+    <string name="result_title">Kết quả</string>
+    <string name="result_score_label">Điểm số</string>
+    <string name="result_excellent">Xuất sắc! 🎉</string>
+    <string name="result_good">Tốt lắm! 👍</string>
+    <string name="result_average">Cố lên! 💪</string>
+    <string name="result_poor">Hãy ôn thêm nhé 📚</string>
+    <string name="result_btn_retry">Làm lại</string>
+    <string name="result_btn_back">Quay về bài học</string>
+    <string name="result_correct_answers">Câu đúng</string>
+    <string name="result_wrong_answers">Câu sai</string>
+    <string name="result_detail_title">Chi tiết kết quả</string>
+    <string name="start_learning">Bắt đầu học (%d bài)</string>
+
+</resources>
