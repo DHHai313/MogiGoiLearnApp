@@ -146,9 +146,11 @@ class QuizActivity : AppCompatActivity() {
 
     private fun navigateToResult() {
         val result = viewModel.quizResult.value ?: return
+        val levelId = intent.getStringExtra(EXTRA_LEVEL_ID) ?: "N5"
         val intent = Intent(this, ResultActivity::class.java).apply {
             putExtra(ResultActivity.EXTRA_CORRECT, result.correctAnswers)
             putExtra(ResultActivity.EXTRA_TOTAL, result.totalQuestions)
+            putExtra(ResultActivity.EXTRA_LEVEL_ID, levelId)
             // Pass serialized results
         }
         startActivity(intent)

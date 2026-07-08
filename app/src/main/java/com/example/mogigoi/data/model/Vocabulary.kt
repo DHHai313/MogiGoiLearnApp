@@ -8,5 +8,6 @@ data class Vocabulary(
     val furigana: String,
     val meaning: String,
     val exampleJapanese: String,
-    val exampleVietnamese: String
+    val exampleVietnamese: String,
+    val isLearned: Boolean = false
 )

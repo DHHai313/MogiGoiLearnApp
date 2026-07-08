@@ -1,17 +1,20 @@
 package com.example.mogigoi.ui.result
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mogigoi.R
 import com.example.mogigoi.adapter.QuizResultAdapter
 import com.example.mogigoi.databinding.ActivityResultBinding
+import com.example.mogigoi.ui.lesson.LessonListActivity
 
 class ResultActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_CORRECT = "correct"
-        const val EXTRA_TOTAL = "total"
+        const val EXTRA_CORRECT  = "correct"
+        const val EXTRA_TOTAL    = "total"
+        const val EXTRA_LEVEL_ID = "level_id"
     }
 
     private lateinit var binding: ActivityResultBinding
@@ -70,8 +73,16 @@ class ResultActivity : AppCompatActivity() {
         }
 
         binding.btnBack.setOnClickListener {
-            // Navigate back to lesson list
-            finishAffinity()
+            // Navigate back to lesson list, clearing quiz & result from the stack
+            val levelId = intent.getStringExtra(EXTRA_LEVEL_ID)
+            if (levelId != null) {
+                val intent = Intent(this, LessonListActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    putExtra(LessonListActivity.EXTRA_LEVEL_ID, levelId)
+                }
+                startActivity(intent)
+            }
+            finish()
         }
     }
 }

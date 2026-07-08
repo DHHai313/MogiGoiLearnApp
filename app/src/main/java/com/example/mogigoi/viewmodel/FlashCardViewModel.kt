@@ -4,14 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mogigoi.data.model.Vocabulary
-import com.example.mogigoi.data.repository.FakeVocabularyRepository
+import com.example.mogigoi.data.repository.RepositoryProvider
 import com.example.mogigoi.data.repository.VocabularyRepository
 
 class FlashCardViewModel : ViewModel() {
 
-    private val repository: VocabularyRepository = FakeVocabularyRepository()
+    private val repository: VocabularyRepository = RepositoryProvider.repository
 
     private var allVocabulary: List<Vocabulary> = emptyList()
+
+    /** The lessonId that was loaded, -1 if loaded by level. */
+    private var currentLessonId: Int = -1
 
     private val _currentIndex = MutableLiveData(0)
     val currentIndex: LiveData<Int> = _currentIndex
@@ -30,6 +33,7 @@ class FlashCardViewModel : ViewModel() {
     val isFinished: LiveData<Boolean> = _isFinished
 
     fun loadVocabulary(lessonId: Int) {
+        currentLessonId = lessonId
         allVocabulary = repository.getVocabularyByLesson(lessonId)
         _totalCount.value = allVocabulary.size
         _currentIndex.value = 0
@@ -37,6 +41,7 @@ class FlashCardViewModel : ViewModel() {
     }
 
     fun loadVocabularyByLevel(levelId: String) {
+        currentLessonId = -1
         allVocabulary = repository.getVocabularyByLevel(levelId)
         _totalCount.value = allVocabulary.size
         _currentIndex.value = 0
@@ -50,7 +55,8 @@ class FlashCardViewModel : ViewModel() {
             _isFlipped.value = false
             updateCurrentWord()
         } else {
-            // Reached the end — signal completion
+            // Reached the end — save progress and signal completion
+            saveProgress()
             _isFinished.value = true
         }
     }
@@ -81,6 +87,21 @@ class FlashCardViewModel : ViewModel() {
         _currentIndex.value = 0
         _isFlipped.value = false
         updateCurrentWord()
+    }
+
+    /**
+     * Persist progress: mark all reviewed vocabulary as learned and update
+     * lesson/level counters.
+     */
+    private fun saveProgress() {
+        if (currentLessonId != -1) {
+            repository.markLessonCompleted(currentLessonId)
+        } else {
+            // Loaded by level — mark each vocab individually
+            allVocabulary.forEach { vocab ->
+                repository.markVocabularyAsLearned(vocab.id)
+            }
+        }
     }
 
     private fun updateCurrentWord() {

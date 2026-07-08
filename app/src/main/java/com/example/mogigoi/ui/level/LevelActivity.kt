@@ -59,7 +59,7 @@ class LevelActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.levels.observe(this) { levels ->
-            levelAdapter.submitList(levels)
+            levelAdapter.submitList(levels.reversed())
         }
     }
 

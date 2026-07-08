@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mogigoi.data.model.Level
 import com.example.mogigoi.data.model.StudyStats
-import com.example.mogigoi.data.repository.FakeVocabularyRepository
+import com.example.mogigoi.data.repository.RepositoryProvider
 import com.example.mogigoi.data.repository.VocabularyRepository
 
 class HomeViewModel : ViewModel() {
 
-    private val repository: VocabularyRepository = FakeVocabularyRepository()
+    private val repository: VocabularyRepository = RepositoryProvider.repository
 
     private val _levels = MutableLiveData<List<Level>>()
     val levels: LiveData<List<Level>> = _levels

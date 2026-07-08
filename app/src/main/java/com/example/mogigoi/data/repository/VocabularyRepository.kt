@@ -18,4 +18,10 @@ interface VocabularyRepository {
     fun getVocabularyByLevel(levelId: String): List<Vocabulary>
     fun getStudyStats(): StudyStats
     fun generateQuiz(vocabulary: List<Vocabulary>): List<QuizQuestion>
+
+    /** Mark a single vocabulary word as learned (is_learned = 1). */
+    fun markVocabularyAsLearned(vocabularyId: Int)
+
+    /** Mark all vocabulary in a lesson as learned and update counters. */
+    fun markLessonCompleted(lessonId: Int)
 }

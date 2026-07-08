@@ -4,15 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mogigoi.data.model.*
-import com.example.mogigoi.data.repository.FakeVocabularyRepository
+import com.example.mogigoi.data.repository.RepositoryProvider
 import com.example.mogigoi.data.repository.VocabularyRepository
 
 class QuizViewModel : ViewModel() {
 
-    private val repository: VocabularyRepository = FakeVocabularyRepository()
+    private val repository: VocabularyRepository = RepositoryProvider.repository
 
     private var questions: List<QuizQuestion> = emptyList()
     private val resultItems = mutableListOf<QuizResultItem>()
+
+    /** The lessonId that was loaded, -1 if loaded by level. */
+    private var currentLessonId: Int = -1
 
     private val _currentQuestionIndex = MutableLiveData(0)
     val currentQuestionIndex: LiveData<Int> = _currentQuestionIndex
@@ -33,11 +36,13 @@ class QuizViewModel : ViewModel() {
     val quizResult: LiveData<QuizResult?> = _quizResult
 
     fun loadQuiz(lessonId: Int) {
+        currentLessonId = lessonId
         val vocabulary = repository.getVocabularyByLesson(lessonId)
         startQuiz(vocabulary)
     }
 
     fun loadQuizByLevel(levelId: String) {
+        currentLessonId = -1
         val vocabulary = repository.getVocabularyByLevel(levelId)
         startQuiz(vocabulary)
     }
@@ -76,12 +81,40 @@ class QuizViewModel : ViewModel() {
     }
 
     private fun finishQuiz() {
+        // Save progress — mark correctly answered vocab as learned
+        saveProgress()
+
         _quizResult.value = QuizResult(
             totalQuestions = questions.size,
             correctAnswers = _correctCount.value ?: 0,
             results = resultItems.toList()
         )
         _quizFinished.value = true
+    }
+
+    /**
+     * Save quiz progress. If loaded by lesson and the user answered ALL
+     * questions correctly, mark the whole lesson as completed.
+     * Otherwise, mark only the correctly answered vocabulary as learned.
+     */
+    private fun saveProgress() {
+        val correctVocabIds = resultItems
+            .filter { it.isCorrect }
+            .map { it.question.vocabularyId }
+
+        if (currentLessonId != -1 && correctVocabIds.size == questions.size) {
+            // Perfect score — mark entire lesson complete
+            repository.markLessonCompleted(currentLessonId)
+        } else {
+            // Mark only the correct ones as learned
+            correctVocabIds.forEach { vocabId ->
+                repository.markVocabularyAsLearned(vocabId)
+            }
+            // If loaded by lesson, update the lesson counter too
+            if (currentLessonId != -1) {
+                repository.markLessonCompleted(currentLessonId)
+            }
+        }
     }
 
     fun restartQuiz() {

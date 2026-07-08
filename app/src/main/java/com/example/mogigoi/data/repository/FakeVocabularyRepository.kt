@@ -43,4 +43,11 @@ class FakeVocabularyRepository : VocabularyRepository {
             )
         }
     }
+    override fun markVocabularyAsLearned(vocabularyId: Int) {
+        // no-op for fake data
+    }
+
+    override fun markLessonCompleted(lessonId: Int) {
+        // no-op for fake data
+    }
 }
